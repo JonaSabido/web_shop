@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+@font-face {
+    font-family: Artegra;
+    src: url(assets/fonts/Artegra.otf);
+}
+
+@font-face {
+    font-family: Cosmata;
+    src: url(assets/fonts/Cosmata.otf);
+}
+.card{
+    height: 300px;
+    width: 230px;
+    box-shadow: 0px 0px 10px 1px #e8e8e8;
+    padding: 40px 20px 40px 20px;
+    transition: .5s;
+}
+
+.card:hover{
+    transition: .5s;
+    scale: 110%;
+}
+
+.newest-products{
+    justify-content: space-evenly;
+}
+
+.btn-cart{
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: Artegra;
+    font-size: 1em;
+}
+
+.btn-add-cart{
+    background-color: #41d2a7;
+}
+.btn-add-cart:hover{
+    background-color: #38B691;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fluid {
+    width: 50%;
+}
+
+.margin-top-1 {
+    margin-top: 1em;
+}
+
+.margin-top-2 {
+    margin-top: 2em;
+}
+
+.margin-top-3 {
+    margin-top: 3em;
+}
+
+.margin-top-4 {
+    margin-top: 4em;
+}
+
+.margin-top-5 {
+    margin-top: 5em;
+}
+
+
+.width-100 {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.padding-inlines {
+    padding-inline: 30px;
+}
+
+
+
+.container-flex-between {
+    justify-content: space-between;
+}
+
+.display-none {
+    display: none !important;
+}
+
+.display-flex {
+    display: flex !important;
+}
+
+.btn-custom {
+    background-color: rgba(56, 182, 145, 0.7);
+}
+
+.btn-custom:hover {
+    background-color: rgba(56, 182, 145, 1);
+}
+
+.link {
+    color: #717171;
+}
+
+.link:hover {
+    color: rgba(56, 182, 145, 1);
+}
+
+.error {
+    color: red;
+}
+
+.text-small {
+    font-size: .7em;
+    font-family: Artegra;
+}
+
+.artegra {
+    font-family: Artegra;
+}
+
+.cosmata {
+    font-family: Cosmata;
+}
+
+.textWhite {
+    color: white;
+}
+
+.textPrimary {
+    color: #38B691;
+}
+
+.textLight {
+    color: #4f4f4f;
+}
+
+.textGray {
+    color: #8d8d8d;
+}
+
+.font-1 {
+    font-size: 10vw;
+}
+
+.font-2 {
+    font-size: 4em;
+}
+
+.font-3 {
+    font-size: 3em;
+}
+
+.font-4 {
+    font-size: 1.5em;
+}
+
+.font-5 {
+    font-size: 1em
+}
+
+
+.btnPrimary {
+    background-color: #38b6909b;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-family: Cosmata;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.textCenter {
+
+    text-align: center;
+}
+
+.btnPrimary:hover {
+    background-color: #38B691;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 10;
+}
+
+.card-image {
+    width: 50%;
+}
+
+.padding-top-3 {
+    padding-top: 3em;
+}
+
+.padding-bottom-3 {
+    padding-bottom: 3em;
+}
+
+.padding-top-1 {
+    padding-top: 5em;
+}
+
+.padding-bottom-1 {
+    padding-bottom: 5em;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-evenly {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.money {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-remove-cart {
+    background-color: #d9534f;
+}
+
+.btn-remove-cart:hover {
+    background-color: #ff3831;
+}
+
+.btn-rounded {
+    border: none;
+    outline: none;
+    border-radius: 100%;
+    color: white;
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.bgPrimary {
+    background-color: #38B691;
+}
+
+
+
+.clickeable {
+    cursor: pointer;
+}
+
+.padding-5 {
+    padding: 1em;
+}
+
+.padding-1 {
+    padding: 5em;
+}
+
+.container-white {
+    background-color: white;
+}
+
+.container-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 15px;
+    margin: 0px !important;
+
+}
+
+th {
+    font-family: Cosmata;
+    font-size: 1em;
+
+}
+
+td {
+    font-size: .8em;
+}
+
+tr,
+td {
+    border: 1px #e4e4e4 solid;
+}
+
+tr th {
+    background-color: #38b690c6;
+    color: white;
+}
+
+
+tr:nth-child(odd) {
+    background-color: rgb(233, 233, 233);
+}
+
+.btn {
+    background-color: white;
+    color: #8c8c8c;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-add {
+    border: 2px #38B691 solid;
+}
+
+.btn-add:hover {
+    background-color: #38B691;
+    color: white;
+}
+
+.btn-edit {
+    border: 2px #f0cc3e solid;
+    margin: 3px;
+
+}
+
+.btn-edit:hover {
+    background-color: #f0cc3e;
+    color: white;
+}
+
+.btn-delete {
+    border: 2px #d9534f solid;
+    margin: 3px;
+}
+
+.btn-delete:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+.end {
+    justify-content: end;
+}
+
+.dialog-actions {
+    display: flex;
+    width: 100%;
+}
+
+.dialog-button {
+    flex-grow: 1;
+    margin-right: 0px;
+}
+
+.loading {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #38B691;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    overflow-y: auto;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .fluid {
+        width: 22%;
+    }
+
+
+
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

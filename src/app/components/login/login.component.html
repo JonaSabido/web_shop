@@ -1,0 +1,153 @@
+<div class="relative" id="container-body">
+  <div class="absolute" [ngClass]="{'rounded-bg-left': isLogin, 'rounded-bg-right': !isLogin }" id="rounded-bg">
+    <img src="../assets/images/logo-blanco.png" class="fluid" id="logo">
+  </div>
+  <div class="absolute" [ngClass]="{'rounded-bg-right': isLogin, 'rounded-bg-left': !isLogin }" id="title-login">
+    <h2>{{isLogin ? 'L O G I N' : 'R E G I S T R O'}}</h2>
+  </div>
+  <div class="container-flex-center" id="container-login">
+
+
+    <div class="relative container-form cont-login" *ngIf="isLogin else register">
+
+      <div class="padding-inlines margin-top-2">
+        <label for="user">Usuario</label>
+        <br>
+        <input type="text" id="user" class="width-100 form-input" [(ngModel)]="dataLogin.nick">
+        <div *ngIf="errors.hasOwnProperty('nick')">
+          <p class="error text-small margin-top-1" *ngFor="let validation of errors.nick">{{validation}}</p>
+        </div>
+      </div>
+      <div class="padding-inlines margin-top-3">
+        <label for="password">Contraseña</label>
+        <br>
+        <input type="password" id="password" class="width-100 form-input" [(ngModel)]="dataLogin.password">
+        <div *ngIf="errors.hasOwnProperty('password')">
+          <p class="error text-small margin-top-1" *ngFor="let validation of errors.password">{{validation}}</p>
+        </div>
+      </div>
+
+      <div class="social-media margin-top-2">
+        <div class="rounded">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook-filled" width="24"
+            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M18 2a1 1 0 0 1 .993 .883l.007 .117v4a1 1 0 0 1 -.883 .993l-.117 .007h-3v1h3a1 1 0 0 1 .991 1.131l-.02 .112l-1 4a1 1 0 0 1 -.858 .75l-.113 .007h-2v6a1 1 0 0 1 -.883 .993l-.117 .007h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-6h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-4a1 1 0 0 1 .883 -.993l.117 -.007h2v-1a6 6 0 0 1 5.775 -5.996l.225 -.004h3z"
+              stroke-width="0" fill="currentColor"></path>
+          </svg>
+        </div>
+        <div class="rounded">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="24"
+            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
+          </svg>
+        </div>
+        <div class="rounded">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24"
+            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+            <path d="M16.5 7.5l0 .01"></path>
+          </svg>
+        </div>
+      </div>
+
+      <p class="error text-small padding-inlines" *ngIf="loginFail && !loading" >Inicio de sesión incorrecto</p>
+
+      <div *ngIf="loading" class="flex-center margin-top-1">
+        <div class="loading"></div>
+      </div>
+
+      <div class="flex margin-top-3 container-flex-between">
+        <button (click)="switchView()" class="link btn-link">Registro</button>
+        <button type="button" class="width-50 btn-custom btn-event" (click)="login()">INICIAR</button>
+      </div>
+
+
+    </div>
+
+    <ng-template #register>
+      <div class="relative container-form cont-register">
+        <div id="register">
+          <div class="container-data-form width-100">
+            <div class="padding-inlines">
+              <label for="name">Nombres</label>
+              <br>
+              <input type="text" id="name" class="width-100 form-input" [(ngModel)]="dataRegister.name">
+              <div *ngIf="errorsRegister.hasOwnProperty('name')">
+                <p class="error text-small margin-top-1" *ngFor="let validation of errorsRegister.name">{{validation}}
+                </p>
+              </div>
+            </div>
+            <div class="padding-inlines margin-top-1">
+              <label for="user2">Usuario</label>
+              <br>
+              <input type="text" id="user2" class="width-100 form-input" [(ngModel)]="dataRegister.nick">
+              <div *ngIf="errorsRegister.hasOwnProperty('nick')">
+                <p class="error text-small margin-top-1" *ngFor="let validation of errorsRegister.nick">{{validation}}
+                </p>
+              </div>
+            </div>
+            <div class="padding-inlines margin-top-1">
+              <label for="password2">Contraseña</label>
+              <br>
+              <input type="password" id="password2" class="width-100 form-input" [(ngModel)]="dataRegister.password">
+              <div *ngIf="errorsRegister.hasOwnProperty('password')">
+                <p class="error text-small margin-top-1" *ngFor="let validation of errorsRegister.password">
+                  {{validation}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="line"></div>
+
+
+          <div class="container-data-form width-100">
+            <div class="padding-inlines">
+              <label for="last_name">Apellido</label>
+              <br>
+              <input type="text" id="last_name" class="width-100 form-input" [(ngModel)]="dataRegister.last_name">
+              <div *ngIf="errorsRegister.hasOwnProperty('last_name')">
+                <p class="error text-small margin-top-1" *ngFor="let validation of errorsRegister.last_name">
+                  {{validation}}</p>
+              </div>
+            </div>
+            <div class="padding-inlines margin-top-1">
+              <label for="email">Correo</label>
+              <br>
+              <input type="email" id="email" class="width-100 form-input" [(ngModel)]="dataRegister.email">
+              <div *ngIf="errorsRegister.hasOwnProperty('email')">
+                <p class="error text-small margin-top-1" *ngFor="let validation of errorsRegister.email">{{validation}}
+                </p>
+              </div>
+            </div>
+            <div class="padding-inlines margin-top-1">
+              <label for="password_confirm">Confirmar Contraseña</label>
+              <br>
+              <input type="password" id="password_confirm" class="width-100 form-input" [(ngModel)]="password_confirm">
+              <p class="error text-small margin-top-1" *ngIf="passwordNotMatch">The passwords doesnt match</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="error text-small padding-inlines" *ngIf="registerFail && !loading">Registro incorrecto</p>
+        <div *ngIf="loading" class="flex-center margin-top-1">
+          <div class="loading"></div>
+        </div>
+
+        <div class="flex margin-top-3 container-flex-between">
+          <button (click)="switchView()" class="link btn-link">Login</button>
+          <button (click)="registers()" class="width-50 btn-custom btn-event">REGISTRAR</button>
+        </div>
+
+
+      </div>
+    </ng-template>
+  </div>
+</div>

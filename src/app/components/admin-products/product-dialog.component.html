@@ -1,0 +1,71 @@
+<h4 *ngIf="data.type === 'new'" mat-dialog-title>
+    Nuevo Producto
+</h4>
+<h4 *ngIf="data.type === 'edit'" mat-dialog-title>
+    Editando Producto: {{entity.id}}
+</h4>
+<div mat-dialog-content style="padding-top: 10px;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="entity.name">
+        <div *ngIf="errors.hasOwnProperty('name')">
+            <p class="error text-small" *ngFor="let validation of errors.name">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput [(ngModel)]="entity.description" style="min-height: 120px;"></textarea>
+        <div *ngIf="errors.hasOwnProperty('description')">
+            <p class="error text-small" *ngFor="let validation of errors.description">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Categoría</mat-label>
+        <mat-select [(ngModel)]="entity.id_category">
+            <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+        </mat-select>
+        <div *ngIf="errors.hasOwnProperty('id_category')">
+            <p class="error text-small" *ngFor="let validation of errors.id_category">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" class="example-right-align" [(ngModel)]="entity.price" [min]="0">
+        <span matTextPrefix>$&nbsp;</span>
+        <div *ngIf="errors.hasOwnProperty('price')">
+            <p class="error text-small" *ngFor="let validation of errors.price">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" class="example-right-align" [(ngModel)]="entity.stock" [min]="0">
+        <div *ngIf="errors.hasOwnProperty('stock')">
+            <p class="error text-small" *ngFor="let validation of errors.stock">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Url Imagen</mat-label>
+        <input matInput [(ngModel)]="entity.url">
+        <div *ngIf="errors.hasOwnProperty('url')">
+            <p class="error text-small" *ngFor="let validation of errors.url">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Activo</mat-label>
+        <mat-select [(ngModel)]="entity.active">
+            <mat-option [value]="1">Si</mat-option>
+            <mat-option [value]="0">No</mat-option>
+        </mat-select>
+        <div *ngIf="errors.hasOwnProperty('active')">
+            <p class="error text-small" *ngFor="let validation of errors.active">{{validation}}</p>
+        </div>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close class="dialog-button">Cerrar</button>
+    <button mat-button color="primary" class="dialog-button" (click)="confirm()" [disabled]="!checkModel">Guardar</button>
+
+</div>
+
+

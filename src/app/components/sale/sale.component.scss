@@ -1,0 +1,44 @@
+
+
+
+.container-operations{
+    display: flex;
+    justify-content: end;
+}
+
+.titles, .amounts{
+    text-align: end;
+    padding: 40px;
+}
+
+.titles{
+    color: rgb(161, 161, 161);
+
+}
+
+input{
+    border: 1px #e4e4e4 solid;
+    padding: 5px;
+    width: 100%;
+
+}
+
+input:focus{
+    border: 1px #bbbbbb solid;
+    outline: none;
+}
+img{
+    margin: 8px;
+}
+.btn-buy{
+    background-color: rgba(0, 230, 96, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-buy:hover{
+    background-color: rgba(0, 230, 96, 0.824);
+
+}

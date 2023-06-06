@@ -1,0 +1,31 @@
+.banner{
+    width: calc(100vw - 57px);
+    height: auto;
+    background-color: #3ab09e44;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 20px 0px 20px;
+}
+
+#text-info{
+    
+    width: 600px
+}
+
+#image-banner{
+    padding: 0px;
+    width: 35%;
+}
+
+@media (max-width: 768px) {
+    .banner{
+        display: block;
+        text-align: center;
+    }
+    #text-info{
+        width: 100%;
+    }
+
+
+}

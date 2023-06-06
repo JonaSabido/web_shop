@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="padding-top-1">
+    <p class="textCenter textGray fs-3 padding-top-1 artegra" *ngIf="products.length" >Resultados de la busqueda: </p>
+    <div class="flex margin-top-1 newest-products" *ngIf="products.length else noProducts">
+        <div class="card margin-top-2 textCenter relative" *ngFor="let product of products">
+            <h5 class="textGray cosmata text-small">{{product.category?.name}}</h5>
+            <h3 class="artegra font-4">{{product.name}}</h3>
+            <h4 class="font-5"><span class="textPrimary cosmata">Precio: </span>${{product.price}}</h4>
+            <h5 class="textGray money text-small">{{product.stock}} en existencia</h5>
+            <img src="{{product.url}}" class="card-image margin-top-2">
+            <button class="btn-cart btn-add-cart absolute" [hidden]="product.stock == 0 || existsInCart(product.id)"
+                (click)="addToCart(product)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M17 17h-11v-14h-2"></path>
+                    <path d="M6 5l14 1l-1 7h-13"></path>
+                </svg>
+                Agregar al carrito
+            </button>
+            <button class="btn-cart btn-remove-cart absolute" [hidden]="!existsInCart(product.id)"
+                (click)="removeFromCart(product.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="20"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 7l16 0"></path>
+                    <path d="M10 11l0 6"></path>
+                    <path d="M14 11l0 6"></path>
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                </svg>
+                Quitar del carrito
+            </button>
+        </div>
+
+    </div>
+</div>
+<ng-template #noProducts>
+    <div class="padding-top-1">
+        <p class="textCenter textGray fs-3 padding-top-1 artegra">Busqueda sin resultados.</p>
+    </div>
+</ng-template>
