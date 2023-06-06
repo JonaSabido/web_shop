@@ -12,7 +12,7 @@ export abstract class ApiService<T>  {
     }
   }
 
-  private readonly api: string = 'http://jonasabido.infinityfreeapp.com/api';
+  private readonly api: string = 'https://jonasabido.infinityfreeapp.com/api';
   //private readonly api: string = 'http://127.0.0.1:8000/api';
   constructor(protected http: HttpClient) {
   }
