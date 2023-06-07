@@ -1,53 +1,71 @@
 <div class="fixed">
-    <div class="navbar">
-        <img id="navbar-logo" src="assets/images/logo.png" class="clickeable" routerLink="/home">
-        <div class="flex">
-            <input type="search" placeholder="Buscar..." [(ngModel)]="searchValue">
-            <button id="btn-search" [disabled]="searchValue==''" (click)="toSearch()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-                    <path d="M21 21l-6 -6"></path>
-                </svg>
-            </button>
-        </div>
-        <div class="flex">
-            <div class="relative">
-                <div id="cart-count" class="absolute">
-                    {{countCartItems}}
-                </div>
-                <button class="btn-nav" routerLink="/sale" title="Carrito">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart"
-                        width="35" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
+    <div class="bgWhite">
+        <div class="navbar">
+            <img id="navbar-logo" src="assets/images/logo.png" class="clickeable" routerLink="/home">
+            <div class="flex" id="firstSearch">
+                <input type="search" placeholder="Buscar..." [(ngModel)]="searchValue">
+                <button id="btn-search" [disabled]="searchValue==''" (click)="toSearch()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M17 17h-11v-14h-2"></path>
-                        <path d="M6 5l14 1l-1 7h-13"></path>
+                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                        <path d="M21 21l-6 -6"></path>
                     </svg>
                 </button>
             </div>
-            <div>
-                <button class="btn-nav" (click)="logOut()" title="Cerrar Sesión">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="35"
-                        viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2">
-                        </path>
-                        <path d="M15 12h-12l3 -3"></path>
-                        <path d="M6 15l-3 -3"></path>
-                    </svg>
-                </button>
+            <div class=" container-nav-button">
+                <div class="relative ">
+                    <div id="cart-count" class="absolute">
+                        {{countCartItems}}
+                    </div>
+                    <button class="btn-nav" routerLink="/sale" title="Carrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart"
+                            width="35" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M17 17h-11v-14h-2"></path>
+                            <path d="M6 5l14 1l-1 7h-13"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="">
+                    <button class="btn-nav" (click)="logOut()" title="Cerrar Sesión">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="35"
+                            viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2">
+                            </path>
+                            <path d="M15 12h-12l3 -3"></path>
+                            <path d="M6 15l-3 -3"></path>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
 
         </div>
+        <div class="flex-center display-mobile">
+            <div class="flex" id="secondSearch">
+                <input type="search" placeholder="Buscar..." [(ngModel)]="searchValue">
+                <button id="btn-search" [disabled]="searchValue==''" (click)="toSearch()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                        <path d="M21 21l-6 -6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
+
     <div class="menu-categories flex">
-        <a class="item-menu artegra font-5" href="home#{{category.name}}"  *ngFor="let category of categories">
+        <a class="item-menu artegra font-5" href="/web_shop/home#{{category.name}}" *ngFor="let category of categories">
             {{category.name}}
         </a>
     </div>

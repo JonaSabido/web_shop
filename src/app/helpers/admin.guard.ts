@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
       if (this.authService.isTokenValidForAdmin()) {
         return true;
       } else {
-        this.router.navigate(['/']); 
+        this.router.navigate(['/home']); 
         return false;
       }
     }

@@ -65,7 +65,7 @@ export interface Product extends Model {
     category?:   Category;
 
     amount:     number
-    subtotal:   number
+    subtotal:   number | string
 }
 
 export interface Profile extends Model {
@@ -98,7 +98,7 @@ export interface SaleDetail extends Model{
 
 export interface Sale extends Model{
     id_user: number;
-    total: number;
+    total: number | string;
     sale_date: Date | string;
     details: SaleDetail[]
 }

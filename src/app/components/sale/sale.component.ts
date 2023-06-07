@@ -32,7 +32,7 @@ export class SaleComponent extends CartService implements OnInit {
         id: 0,
         id_sale: 0,
         id_product: item.id,
-        total: item.subtotal,
+        total: Number(item.subtotal),
         amount: item.amount,
       }
       details.push(detail)

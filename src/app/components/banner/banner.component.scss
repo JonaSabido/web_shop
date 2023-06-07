@@ -1,16 +1,16 @@
 .banner{
-    width: calc(100vw - 57px);
+    width: 100%;
     height: auto;
     background-color: #3ab09e44;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 120px 20px 0px 20px;
+    padding: 120px 0px 0px 0px;
 }
 
 #text-info{
     
-    width: 600px
+    width: 400px
 }
 
 #image-banner{
@@ -22,10 +22,22 @@
     .banner{
         display: block;
         text-align: center;
+        padding-top: 140px;
     }
+    
     #text-info{
         width: 100%;
     }
 
 
+}
+
+@media (max-width: 300px) {
+    .banner{
+        padding-top: 170px;
+    }
+
+    #image-banner{
+        width: 80%;
+    }
 }

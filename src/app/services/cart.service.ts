@@ -5,7 +5,7 @@ import { Product } from 'shared/interfaces';
 export class CartService {
     private cartItems: Product[] = [];
     private subtotal: number = 0
-    private total: number = 0
+    private total: number | string = 0
 
     constructor() {
         this.loadCartItems();
@@ -26,7 +26,7 @@ export class CartService {
 
     updateItem(id: number){
         const item = this.cartItems.filter(product => product.id == id)[0]
-        item.subtotal = item.amount * item.price
+        item.subtotal = (item.amount * item.price).toFixed(2)
         this.saveCartItems()
     }
 
@@ -38,7 +38,7 @@ export class CartService {
         this.subtotal = 0.0
         this.total = 0.0
         this.cartItems.forEach(product => this.subtotal += Number(product.subtotal))
-        this.total = this.subtotal * .5
+        this.total = (this.subtotal * 0.5).toFixed(2);
     }
 
     cleanCart(){

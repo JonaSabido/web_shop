@@ -151,6 +151,11 @@
     color: white;
 }
 
+.bgWhite {
+    background-color: white;
+}
+
+
 .textPrimary {
     color: #38B691;
 }
@@ -277,8 +282,8 @@
     padding: 1em;
 }
 
-.padding-1 {
-    padding: 5em;
+.padding-view-admin {
+    padding: 8em 3.5em 3.5em 3.5em;
 }
 
 .container-white {
@@ -389,6 +394,10 @@ tr:nth-child(odd) {
     animation: spin 2s linear infinite;
 }
 
+.display-mobile{
+    display: none;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -405,8 +414,19 @@ tr:nth-child(odd) {
     }
 
 
+}
+
+@media (max-width: 300px) {
+    .display-mobile{
+        display: block;
+    }
+
+    .padding-view-admin{
+        padding: 12em 2em 2em 2em;
+    }
 
 }
+
 
 html,
 body {
