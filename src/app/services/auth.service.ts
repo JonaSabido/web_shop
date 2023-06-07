@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'shared/services/api.service';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 export class AuthService extends ApiService<User>{
     helper = new JwtHelperService()
-    constructor(http: HttpClient) {
+    constructor(http: HttpClient, private router: Router) {
         super(http);
     }
 
@@ -31,37 +32,37 @@ export class AuthService extends ApiService<User>{
     public logOut() {
         localStorage.removeItem("cartItems")
         localStorage.removeItem("token_shop_app")
-        location.href = '/'
+        this.router.navigate(['/auth']);
 
     }
 
-    public isTokenValid(){
-        try{
+    public isTokenValid() {
+        try {
             const token = localStorage.getItem("token_shop_app")
             return !this.helper.isTokenExpired(token)
         }
-        catch{
+        catch {
             return false
         }
     }
 
-    public isTokenValidForAdmin(){
-        try{
+    public isTokenValidForAdmin() {
+        try {
             const token = localStorage.getItem("token_shop_app") || ""
             return !this.helper.isTokenExpired(token) && this.helper.decodeToken(token)['user']['id_profile'] == 1
         }
-        catch{
+        catch {
             return false
         }
     }
 
-    public getDecodeToken(){
-        try{
+    public getDecodeToken() {
+        try {
             const token = localStorage.getItem("token_shop_app") || ""
             console.log(this.helper.decodeToken(token)['user'])
             return this.helper.decodeToken(token)['user']
         }
-        catch{
+        catch {
             return false
         }
     }
