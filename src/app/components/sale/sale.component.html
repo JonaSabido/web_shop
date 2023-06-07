@@ -26,8 +26,11 @@
                 </td>
                 <td class="money">$ {{item.price}}</td>
                 <td>
-                    <input type="number" [(ngModel)]="item.amount" (ngModelChange)="updateItem(item.id)" min="1"
-                        max="{{item.stock}}" class="money">
+                    <input type="number" [(ngModel)]="item.amount" (ngModelChange)="updateItem(item.id)" [min]="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                        max="{{item.stock}}" class="money" (onblur)="updateItem(item.id)">
+                    <label class="error" *ngIf="item.amount < 1">Cantidad no valida</label>
+                    <label class="error" *ngIf="item.amount > item.stock">No hay stock</label>
+
                 </td>
                 <td class="money">
                     <div class="flex-center">
@@ -57,6 +60,6 @@
 
 <div class="container-operations">
     <div class="amounts">
-        <button mat-button class="btn-shop artegra btn-buy" [disabled]="!getCartItems.length" (click)="confirmSale()">REALIZAR COMPRA</button>
+        <button mat-button class="btn-shop artegra btn-buy" [disabled]="!getCartItems.length || invalidItems" (click)="confirmSale()">REALIZAR COMPRA</button>
     </div>
 </div>

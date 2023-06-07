@@ -58,6 +58,10 @@ export class CartService {
         return this.subtotal;
     }
 
+    get invalidItems(){
+        return this.cartItems.some(product => product.amount < 1 || product.amount > product.stock)
+    }
+
     private saveCartItems() {
         localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
         this.getTotalSubtotal()
