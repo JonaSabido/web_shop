@@ -12,8 +12,8 @@ export abstract class ApiService<T>  {
     }
   }
 
-  private readonly api: string = 'https://api-shop-production.up.railway.app/api';
-  //private readonly api: string = 'http://127.0.0.1:8000/api';
+  //private readonly api: string = 'https://api-shop-production.up.railway.app/api';
+  private readonly api: string = 'http://127.0.0.1:8000/api';
   constructor(protected http: HttpClient) {
   }
 

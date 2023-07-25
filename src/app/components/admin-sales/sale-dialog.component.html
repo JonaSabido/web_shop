@@ -1,0 +1,83 @@
+<h2 mat-dialog-title class="bgPrimary" style="color: white !important;">
+    Venta: {{entity.id}}
+</h2>
+<div mat-dialog-content style="padding: 40px;">
+    <div class="margin-top-5">
+        <label class="label-small-gray">DETALLES DE VENTA</label>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Realizada por: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.user?.name}} {{entity.user?.last_name}} (
+                {{entity.user?.nick}} ) </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Fecha de venta: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.sale_date.toString().slice(0,10)}} </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Subtotal: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> ${{entity.subtotal}} </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Descuento: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.discount_rate}}% </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Total: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> ${{entity.total}} </p>
+        </div>
+    </div>
+
+
+    <div class="margin-top-2">
+        <label class="label-small-gray">DESGLOSE DE PRODUCTOS</label>
+        <div class="container-table">
+            <table id="sale_details" class="margin-top-1" *ngIf="!loading">
+                <thead>
+                    <tr>
+                        <th scope="">Producto</th>
+                        <th scope="">Cantidad</th>
+                        <th scope="">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of entity.details">
+                        <td class="money">{{item.product?.name}} </td>
+                        <td class="money">{{item.amount}} </td>
+                        <td class="money">${{item.total}} </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="margin-top-2">
+        <label class="label-small-gray">DETALLES DE PAGO</label>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Metodo de pago: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> Tarjeta </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Fecha del pago: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.payment?.sale_hour_date?.toString()?.slice(0,10)}} </p>
+        </div>
+        <!-- <div class="flex margin-top-1">
+            <h3 class="cosmata">Hora del pago: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.payment?.sale_hour_date?.toString()?.slice(10,18)}} </p>
+        </div> -->
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Cantidad pagada: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> ${{entity.payment?.amount}} </p>
+        </div>
+        <div class="flex margin-top-1">
+            <h3 class="cosmata">Direccion de envio: </h3>
+            <p class="money font-5" style="margin-left: 5px;"> {{entity.payment?.street}} </p>
+        </div>
+    </div>
+
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close class="dialog-button">Cerrar</button>
+
+</div>

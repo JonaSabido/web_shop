@@ -3,9 +3,26 @@
         <div class="flex-center padding-5">
             <img id="navbar-logo" src="assets/images/logo-blanco.png" class="clickeable" [routerLink]="['/home']"
                 width="80">
-            <p class="textLight text-small artegra">Panel Administrativo</p>
+            <!-- <p class="textLight text-small artegra">Panel Administrativo</p> -->
         </div>
+        <a [routerLink]="['/panel/dashboard']" class="padding-5 artegra">Dashboard</a>
+        <a [routerLink]="['/panel/sales']" class="padding-5 artegra">Ventas</a>
         <a [routerLink]="['/panel/products']" class="padding-5 artegra">Productos</a>
+        <a [routerLink]="['/panel/categories']" class="padding-5 artegra">Categorias</a>
         <a [routerLink]="['/panel/users']" class="padding-5 artegra">Usuarios</a>
+        
+        <div class="">
+            <button class="btn-nav" (click)="logOut()" title="Cerrar Sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="35"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2">
+                    </path>
+                    <path d="M15 12h-12l3 -3"></path>
+                    <path d="M6 15l-3 -3"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 </div>

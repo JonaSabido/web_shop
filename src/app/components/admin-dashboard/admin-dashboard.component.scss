@@ -1,0 +1,31 @@
+.subtitle-dashboard {
+    color: #a8a8a8;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    border-bottom: 1px #a8a8a8 solid;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container-dashboard {
+    display: flex;
+    justify-content: space-around;
+}
+
+#first-container-dashboard{
+    width: 50%;
+}
+
+#second-container-dashboard{
+    width: 40%;
+}
+
+.flex-dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

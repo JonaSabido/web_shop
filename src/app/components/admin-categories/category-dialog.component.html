@@ -1,0 +1,33 @@
+<h4 *ngIf="data.type === 'new'" mat-dialog-title>
+    Nueva Categoría
+</h4>
+<h4 *ngIf="data.type === 'edit'" mat-dialog-title>
+    Editando Categoría: {{entity.id}}
+</h4>
+<div mat-dialog-content style="padding-top: 10px;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="entity.name">
+        <div *ngIf="errors.hasOwnProperty('name')">
+            <p class="error text-small" *ngFor="let validation of errors.name">{{validation}}</p>
+        </div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Activo</mat-label>
+        <mat-select [(ngModel)]="entity.active">
+            <mat-option [value]="1">Si</mat-option>
+            <mat-option [value]="0">No</mat-option>
+        </mat-select>
+        <div *ngIf="errors.hasOwnProperty('active')">
+            <p class="error text-small" *ngFor="let validation of errors.active">{{validation}}</p>
+        </div>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close class="dialog-button">Cerrar</button>
+    <button mat-button color="primary" class="dialog-button" (click)="confirm()" [disabled]="!checkModel">Guardar</button>
+
+</div>
+
+

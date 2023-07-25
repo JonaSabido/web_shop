@@ -22,6 +22,7 @@ export class CartService {
     removeFromCart(id: number) {
         this.cartItems = this.cartItems.filter(product => product.id != id);
         this.saveCartItems();
+        console.log(this.getCartItems.length)
     }
 
     updateItem(id: number){

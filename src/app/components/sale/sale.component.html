@@ -60,6 +60,6 @@
 
 <div class="container-operations">
     <div class="amounts">
-        <button mat-button class="btn-shop artegra btn-buy" [disabled]="!getCartItems.length || invalidItems" (click)="confirmSale()">REALIZAR COMPRA</button>
+        <button mat-button class="btn-shop artegra btn-buy" [disabled]="!getCartItems.length || invalidItems" [routerLink]="['/payment']" >REALIZAR COMPRA</button>
     </div>
 </div>

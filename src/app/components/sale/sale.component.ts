@@ -20,59 +20,10 @@ export class SaleComponent extends CartService implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartItems
 
   }
 
-  get createSaleData() {
 
-    const details: SaleDetail[] = []
 
-    this.getCartItems.forEach(item => {
-      const detail: SaleDetail = {
-        id: 0,
-        id_sale: 0,
-        id_product: item.id,
-        total: Number(item.subtotal),
-        amount: item.amount,
-      }
-      details.push(detail)
-    })
-
-    const sale: Sale = {
-      id: 0,
-      id_user: this.authService.getDecodeToken()['id'],
-      total: this.getTotal,
-      sale_date: new Date().toISOString().slice(0, 10),
-      details: details
-    }
-    return sale;
-  }
-
-  confirmSale() {
-    ConfirmSale.fire({
-      title: '¿Esta seguro que desea realizar la compra?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Aceptar',
-      cancelButtonText: 'Cancelar',
-      reverseButtons: true,
-    }).then(result => {
-      if (result.value) {
-        this.service.store(this.createSaleData).subscribe(response => {
-          this.cleanCart()
-          Toast.fire({
-            icon: 'success',
-            title: 'Compra realizada correctamente',
-          })
-        },
-          error => {
-            Toast.fire({
-              icon: 'error',
-              title: 'Error al realizar la compra'
-            });
-          })
-      }
-    },
-    )
-  }
 }

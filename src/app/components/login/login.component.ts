@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   registers() {
     this.errorsRegister = {}
-    if (this.dataRegister.password == this.password_confirm && this.dataRegister.password != "" && this.password_confirm != "") {
+    //if (this.dataRegister.password == this.password_confirm && this.dataRegister.password != "" && this.password_confirm != "") {
       this.loading = true
       this.authService.register(this.dataRegister).subscribe(
         response => {
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
           if (error.status == 400) this.errorsRegister = error.error
           if (error.status == 401) this.errorsRegister = {}, this.registerFail = true
         })
-    }
+    //}
 
   }
 
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.loginFail = false
         localStorage.setItem("token_shop_app", response.accessToken)
-        this.authService.isTokenValidForAdmin() ? this.router.navigate(['/panel/products'], { relativeTo: this.route }) : this.router.navigate(['/home'], { relativeTo: this.route });
+        this.authService.isTokenValidForAdmin() ? this.router.navigate(['/panel/dashboard'], { relativeTo: this.route }) : this.router.navigate(['/home'], { relativeTo: this.route });
 
       },
       error => {

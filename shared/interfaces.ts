@@ -6,7 +6,7 @@ export interface TimeStamps {
 export interface DialogDataProduct {
     id: number;
     type: 'new' | 'edit'
-  }
+}
 
 export interface ListWCursor<T> {
     data: {
@@ -26,7 +26,7 @@ export interface ListWCursor<T> {
     cursor: string;
 }
 
-export interface SimpleList<T>{
+export interface SimpleList<T> {
     success: boolean,
     data: T[],
     message: any
@@ -56,16 +56,16 @@ export interface LoginSuccess {
 
 export interface Product extends Model {
     id_category: number;
-    name:        string;
+    name: string;
     description: null;
-    price:       number;
-    stock:       number;
-    url:         string;
-    active:      boolean | number;
-    category?:   Category;
+    price: number;
+    stock: number;
+    url: string;
+    active: boolean | number;
+    category?: Category;
 
-    amount:     number
-    subtotal:   number | string
+    amount: number
+    subtotal: number | string
 }
 
 export interface Profile extends Model {
@@ -89,16 +89,53 @@ export interface User extends Model {
     o_profile?: Profile;
 }
 
-export interface SaleDetail extends Model{
+export interface SaleDetail extends Model {
     id_sale: number;
     id_product: number;
     amount: number;
     total: number;
+    product?: Product
 }
 
-export interface Sale extends Model{
+export interface Sale extends Model {
     id_user: number;
+    subtotal: number,
+    discount_rate: number,
     total: number | string;
     sale_date: Date | string;
-    details: SaleDetail[]
+    details?: SaleDetail[],
+    payment?: Payment
+    user?: User
+}
+
+export interface Payment extends Model {
+    id_sale: number,
+    sale_hour_date: Date | string,
+    amount: number,
+    street: string,
+    status: string,
+}
+
+export interface BalanceTotal {
+    total_users: number,
+    total_sales: number,
+    total_products: number
+}
+
+export interface BalanceSale {
+    total_absolute_today: number,
+    total_absolute_yesterday: number,
+    percentaje_earning: number,
+}
+
+export interface SaleWeek {
+    date:       Date;
+    day:        string;
+    count_sale: number;
+}
+
+
+export interface MoreProductSale {
+    name:         string;
+    amount_sales: number;
 }

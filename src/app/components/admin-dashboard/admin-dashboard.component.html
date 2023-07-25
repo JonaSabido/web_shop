@@ -1,0 +1,161 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="padding-view-admin">
+    <h4 class="artegra">Dashboard Principal</h4>
+    <div class="container-dashboard margin-top-3">
+
+
+        <div id="first-container-dashboard">
+
+
+            <div id="sales-dashboard">
+                <h5 class="artegra subtitle-dashboard">Balance de ventas</h5>
+                <div class="flex-between margin-top-1">
+                    <div>
+                        <h1 class="textPrimary">{{balanceSale.total_absolute_today}} MXN</h1>
+                        <label class="label-small-gray">GANANCIA DEL DÍA</label>
+                    </div>
+                    <div>
+                        <div class="flex" style="justify-content: end;">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="color: #5cb85c;"
+                                class="icon icon-tabler icon-tabler-arrow-big-up-lines-filled" width="30" height="35"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                *ngIf="balanceSale.percentaje_earning >= 0 else iconUnbalanced">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M10.586 3l-6.586 6.586a2 2 0 0 0 -.434 2.18l.068 .145a2 2 0 0 0 1.78 1.089h2.586v2a1 1 0 0 0 1 1h6l.117 -.007a1 1 0 0 0 .883 -.993l-.001 -2h2.587a2 2 0 0 0 1.414 -3.414l-6.586 -6.586a2 2 0 0 0 -2.828 0z"
+                                    stroke-width="0" fill="currentColor"></path>
+                                <path d="M15 20a1 1 0 0 1 .117 1.993l-.117 .007h-6a1 1 0 0 1 -.117 -1.993l.117 -.007h6z"
+                                    stroke-width="0" fill="currentColor"></path>
+                                <path d="M15 17a1 1 0 0 1 .117 1.993l-.117 .007h-6a1 1 0 0 1 -.117 -1.993l.117 -.007h6z"
+                                    stroke-width="0" fill="currentColor"></path>
+                            </svg>
+                            <ng-template #iconUnbalanced>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color: #d9534f"
+                                    class="icon icon-tabler icon-tabler-arrow-big-down-lines-filled" width="30"
+                                    height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M9 8l-.117 .007a1 1 0 0 0 -.883 .993v1.999l-2.586 .001a2 2 0 0 0 -1.414 3.414l6.586 6.586a2 2 0 0 0 2.828 0l6.586 -6.586a2 2 0 0 0 .434 -2.18l-.068 -.145a2 2 0 0 0 -1.78 -1.089l-2.586 -.001v-1.999a1 1 0 0 0 -1 -1h-6z"
+                                        stroke-width="0" fill="currentColor"></path>
+                                    <path
+                                        d="M15 2a1 1 0 0 1 .117 1.993l-.117 .007h-6a1 1 0 0 1 -.117 -1.993l.117 -.007h6z"
+                                        stroke-width="0" fill="currentColor"></path>
+                                    <path
+                                        d="M15 5a1 1 0 0 1 .117 1.993l-.117 .007h-6a1 1 0 0 1 -.117 -1.993l.117 -.007h6z"
+                                        stroke-width="0" fill="currentColor"></path>
+                                </svg>
+                            </ng-template>
+
+                            <h1 class="textPrimary">{{balanceSale.percentaje_earning}}%</h1>
+
+                        </div>
+                        <label class="label-small-gray">EN COMPARACIÓN DE AYER: {{balanceSale.total_absolute_yesterday}} MXN</label>
+
+                    </div>
+                </div>
+                <div id="divChart" style="margin-top: 40px;">
+                    <canvas #chartSales></canvas>
+                </div>
+            </div>
+
+
+            <div id="new-users-dashboard" class="margin-top-5">
+                <h5 class="artegra subtitle-dashboard">Usuarios nuevos</h5>
+                <div class="container-table">
+                    <table class="margin-top-2" *ngIf="!loading">
+                        <thead>
+                            <tr>
+                                <th scope="">Nick</th>
+                                <th scope="">Fecha de registro</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="users.length">
+                            <tr *ngFor="let item of users">
+                                <td class="money">{{item.nick}} </td>
+                                <td class="money">{{item.created_at?.toString()?.slice(0,10)}} </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div id="second-container-dashboard">
+            <div id="products-dashboard" >
+                <h5 class="artegra subtitle-dashboard">Productos más vendidos</h5>
+                <div id="divChartProduct" style="height: 450px;" >
+                    <canvas #chartProducts></canvas>
+                </div>
+
+            </div>
+            <div id="balance-dashboard" class="margin-top-5">
+                <div class=" flex-dashboard">
+                    <div class="flex-dashboard" style="margin: 15px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="70"
+                            height="70" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                        </svg>
+                        <div style="margin-left: 10px;">
+                            <h1 class="textPrimary font-3">{{balanceTotal.total_users}}</h1>
+                            <h5 class="cosmata font-5">Usuarios.</h5>
+                        </div>
+                    </div>
+
+                    <div class="flex-dashboard" style="margin: 15px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-money"
+                            width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                            </path>
+                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z">
+                            </path>
+                            <path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+                            <path d="M12 17v1m0 -8v1"></path>
+                        </svg>
+                        <div style="margin-left: 10px;">
+                            <h1 class="textPrimary font-3">{{balanceTotal.total_sales}}</h1>
+                            <h5 class="cosmata font-5">Ventas.</h5>
+                        </div>
+                    </div>
+
+                    <div class="flex-dashboard" style="margin: 15px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shirt" width="70"
+                            height="70" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0">
+                            </path>
+                        </svg>
+                        <div style="margin-left: 10px;">
+                            <h1 class="textPrimary font-3">{{balanceTotal.total_products}}</h1>
+                            <h5 class="cosmata font-5">Productos.</h5>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="container-table">
+    </div>
+    <!-- <div *ngIf="loading" class="flex-center margin-top-1">
+        <div class="loading"></div>
+    </div> -->
+
+</div>

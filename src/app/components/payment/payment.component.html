@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<h3 class="artegra font-4 padding-top-1 textCenter">Datos de pago y envio</h3>
+<div class="padding-payment">
+    <div class="container-payment">
+        <div class="form-payment" style="width: 60%; margin-right: 90px;">
+            <label class="label-small-gray">NUMERO DE TARJETA</label>
+            <input type="text" min="16" max="16" class="input-payment" placeholder="16 dígitos"
+                [(ngModel)]="target_number" style="width: 100%; margin-top: 5px;" maxlength="16"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+
+            <div class="container-inputs-payment margin-top-2" style="width: 100%;">
+
+                <div class="container-input-payment" style="width: 55%;" id="container-date">
+                    <label class="label-small-gray">FECHA DE VENCIMIENTO</label>
+                    <input type="text" class="input-payment" placeholder="5 dígitos incluyendo el signo '/'"
+                        [(ngModel)]="target_expiration" style="width: 100%; margin-top: 5px;" maxlength="5" 
+                        >
+                </div>
+
+                <div class="container-input-payment" style="width: 35%;" id="container-cvv">
+                    <label class="label-small-gray">CVV</label>
+                    <input type="text" class="input-payment" placeholder="3 dígitos" [min]="3" maxlength="3"
+                        [(ngModel)]="target_cvv" style="width: 100%; margin-top: 5px;"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                </div>
+
+            </div>
+
+            <div class="margin-top-2">
+                <label class="label-small-gray">DIRECCION DE ENVÍO DENTRO DE MEXICO</label>
+                <input type="text" min="16" max="16" class="input-payment" placeholder="Entre 20 a 255 caracteres"
+                    [(ngModel)]="payment.street" style="width: 100%; margin-top: 5px;">
+            </div>
+        </div>
+        <div class="container-secure-payment" style="width: 40%; ">
+            <img src="assets/images/secure-payment.png" id="image-banner" style="width: 80%;">
+            <p class="text-secure-payment" style="width: 100%;">Realiza pagos seguros con nosotros. Estamos
+                comprometidos a no guardar tu
+                información bancaria así como
+                asegurar el envío de tus productos.</p>
+
+        </div>
+    </div>
+    <button mat-button (click)="confirmSale()" [disabled]="!formComplete||getCartItems.length==0" class="button-payment margin-top-3">REALIZAR
+        PAGO <span class="money" style="font-weight:700;"> MXN {{getTotal}} </span></button>
+</div>

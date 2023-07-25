@@ -21,6 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgMaterialModule } from '../../shared/angular-material/angular.material.module';
 import { AdminUsersComponent, UserDialog } from './components/admin-users/admin-users.component';
 import { SearchComponent } from './components/search/search.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AdminSalesComponent, SaleDialog } from './components/admin-sales/admin-sales.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminCategoriesComponent, CategoryDialog } from './components/admin-categories/admin-categories.component';
 
 
 
@@ -33,12 +37,18 @@ import { SearchComponent } from './components/search/search.component';
     BannerComponent,
     NavbarComponent,
     SaleComponent,
+    PaymentComponent,
     SearchComponent,
+    AdminDashboardComponent,
     AdminProductsComponent,
+    AdminCategoriesComponent,
     AdminUsersComponent,
+    AdminSalesComponent,
     AdminNavbarComponent,
     ProductDialog,
-    UserDialog
+    CategoryDialog,
+    UserDialog,
+    SaleDialog
   ],
   imports: [
     BrowserModule,

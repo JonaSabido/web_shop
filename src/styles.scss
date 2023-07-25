@@ -399,6 +399,13 @@ tr:nth-child(odd) {
     display: none;
 }
 
+.label-small-gray {
+    font-size: .7em;
+    font-family: Artegra;
+    font-weight: bold;
+    color: #757575;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
